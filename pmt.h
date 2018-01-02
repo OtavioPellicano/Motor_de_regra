@@ -78,9 +78,10 @@ private: //Variaveis Privadas
 
 
 
-private: //Métodos Públicos
+private: //Métodos Privados
     string retirarAspas(const string &strIn);
     void normalizarDataHora();
+    void atualizarTabelaHoraVerao();
 
 };
 
