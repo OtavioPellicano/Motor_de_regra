@@ -20,7 +20,7 @@ int main()
 
     opmm::PMT claro(dataRef, ufServidor, ufCliente, tipoLayout);
 
-    if (claro.medidaValidaPmt())
+    if (claro.medicaoValida())
     {
         qDebug() << "Dentro do PMT";
     }

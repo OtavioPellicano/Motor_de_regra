@@ -9,7 +9,7 @@ PMT::PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLay
     normalizarDataHora();
 }
 
-bool PMT::medidaValidaPmt()
+bool PMT::medicaoValida()
 {
     if(mDataHoraNormalizada.time() >= mHoraInicio && mDataHoraNormalizada.time() <= mHoraFinal)
     {

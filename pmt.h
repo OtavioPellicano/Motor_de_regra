@@ -22,7 +22,7 @@ public: //Métodos Públicos
     PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLayout, QTime horaInicio = QTime(10,0,0),
         QTime horaFinal = QTime(22,0,0));
 
-    bool medidaValidaPmt();
+    bool medicaoValida();
 
 private: //Variaveis Privadas
     string mDataHoraRef;
