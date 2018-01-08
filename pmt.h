@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <QDateTime>
 #include <map>
+#include <QTime>
 
 namespace opmm {
 
@@ -18,8 +19,10 @@ class PMT
 {
 
 public: //Métodos Públicos
-    PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLayout);
+    PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLayout, QTime horaInicio = QTime(10,0,0),
+        QTime horaFinal = QTime(22,0,0));
 
+    bool medidaValidaPmt();
 
 private: //Variaveis Privadas
     string mDataHoraRef;
@@ -28,6 +31,8 @@ private: //Variaveis Privadas
     QDateTime mDataHoraNormalizada;
 
     layout mTipoLayout;
+    QTime mHoraInicio;
+    QTime mHoraFinal;
 
     bool flagHorarioVerao = false;
 
@@ -75,8 +80,6 @@ private: //Variaveis Privadas
         {"SC", 0},
         {"SP", 0}
     };
-
-
 
 private: //Métodos Privados
     string retirarAspas(const string &strIn);

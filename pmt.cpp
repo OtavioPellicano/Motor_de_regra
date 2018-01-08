@@ -2,13 +2,25 @@
 
 namespace opmm {
 
-
-
-PMT::PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLayout)
-    :mDataHoraRef(dataHoraRef), mUfServidor(ufServidor), mUfCliente(ufCliente), mTipoLayout(tipoLayout)
+PMT::PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLayout, QTime horaInicio, QTime horaFinal)
+    :mDataHoraRef(dataHoraRef), mUfServidor(ufServidor), mUfCliente(ufCliente), mTipoLayout(tipoLayout),
+      mHoraInicio(horaInicio), mHoraFinal(horaFinal)
 {
     normalizarDataHora();
 }
+
+bool PMT::medidaValidaPmt()
+{
+    if(mDataHoraNormalizada.time() >= mHoraInicio && mDataHoraNormalizada.time() <= mHoraFinal)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
 string PMT::retirarAspas(const string &strIn)
 {
@@ -94,12 +106,10 @@ void PMT::normalizarDataHora()
             mDataHoraNormalizada = mDataHoraNormalizada.addSecs(inc*3600);
         }
 
-
         break;
     default:
         break;
     }
-
 
 }
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "pmt.h"
-
+#include <QTime>
+#include <QDebug>
 
 
 using namespace std;
@@ -10,7 +11,7 @@ int main()
 
     //SEMIGLOBE
     //string dataRef = "\"12/19/2017 03:00\"";    //SEMIGLOBE
-    string dataRef = "\"2017-11-30 23:42:13\""; //TGR
+    string dataRef = "\"2017-11-30 15:42:13\""; //TGR
 
     string ufCliente = "GO";
     string ufServidor = "AC";
@@ -19,9 +20,14 @@ int main()
 
     opmm::PMT claro(dataRef, ufServidor, ufCliente, tipoLayout);
 
+    if (claro.medidaValidaPmt())
+    {
+        qDebug() << "Dentro do PMT";
+    }
+    else
+    {
+        qDebug() << "Fora do PMT";
+    }
 
-
-
-    cout << "Hello World!" << endl;
     return 0;
 }
