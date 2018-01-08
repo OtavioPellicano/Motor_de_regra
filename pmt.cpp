@@ -11,7 +11,8 @@ PMT::PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLay
 
 bool PMT::medicaoValida()
 {
-    if(mDataHoraNormalizada.time() >= mHoraInicio && mDataHoraNormalizada.time() <= mHoraFinal)
+
+    if((mDataHoraNormalizada.time() >= mHoraInicio && mDataHoraNormalizada.time() <= mHoraFinal) && (mDataHoraNormalizada.date() != QDate(1900,1,1)))
     {
         return true;
     }
@@ -19,6 +20,7 @@ bool PMT::medicaoValida()
     {
         return false;
     }
+
 }
 
 
@@ -39,10 +41,50 @@ string PMT::retirarAspas(const string &strIn)
 void PMT::normalizarDataHora()
 {
     string dataHoraSemAspas = retirarAspas(mDataHoraRef);
-
+    int dia, mes, ano, hora, minuto, segundo;
+    short inc;
 
     switch (mTipoLayout) {
-    case ABR:
+    case ABR:   //AAAA-MM-DD HH:MM:SS.SSSSSS
+
+        if(dataHoraSemAspas.size() != 26)
+        {
+            cout << "Data fora do formato!" << endl;
+        }
+        else
+        {
+
+            try
+            {
+                ano = stoi(string(dataHoraSemAspas,0,4));
+                mes = stoi(string(dataHoraSemAspas,5,2));
+                dia = stoi(string(dataHoraSemAspas,8,2));
+
+                hora = stoi(string(dataHoraSemAspas,11,2));
+                minuto = stoi(string(dataHoraSemAspas,14,2));
+                segundo = stoi(string(dataHoraSemAspas,17,2));
+            }
+            catch(...)
+            {
+                ano = 1900;
+                mes = 1;
+                dia = 1;
+
+                hora = 12;
+                minuto = 0;
+                segundo = 0;
+            }
+
+            mDataHoraNormalizada = QDateTime(QDate(ano, mes, dia),QTime(hora, minuto, segundo));
+
+            atualizarTabelaHoraVerao();
+            inc =
+                    (mMapUfHorarioVerao.find(retirarAspas(mUfServidor)) != mMapUfHorarioVerao.end() ? mMapUfGmt[retirarAspas(mUfServidor)] + mMapUfHorarioVerao[retirarAspas(mUfServidor)] : mMapUfGmt[retirarAspas(mUfServidor)])
+                   - (mMapUfHorarioVerao.find(retirarAspas(mUfCliente)) != mMapUfHorarioVerao.end() ? mMapUfGmt[retirarAspas(mUfCliente)] + mMapUfHorarioVerao[retirarAspas(mUfCliente)] : mMapUfGmt[retirarAspas(mUfCliente)]);
+
+            //Add o incremento
+            mDataHoraNormalizada = mDataHoraNormalizada.addSecs(inc*3600);
+        }
 
         break;
     case TGR:   //AAAA-MM-DD HH:MM:SS
@@ -53,18 +95,33 @@ void PMT::normalizarDataHora()
         }
         else
         {
-            int ano = stoi(string(dataHoraSemAspas,0,4));
-            int mes = stoi(string(dataHoraSemAspas,5,2));
-            int dia = stoi(string(dataHoraSemAspas,8,2));
 
-            int hora = stoi(string(dataHoraSemAspas,11,2));
-            int minuto = stoi(string(dataHoraSemAspas,14,2));
-            int segundo = stoi(string(dataHoraSemAspas,17,2));
+            try
+            {
+                ano = stoi(string(dataHoraSemAspas,0,4));
+                mes = stoi(string(dataHoraSemAspas,5,2));
+                dia = stoi(string(dataHoraSemAspas,8,2));
+
+                hora = stoi(string(dataHoraSemAspas,11,2));
+                minuto = stoi(string(dataHoraSemAspas,14,2));
+                segundo = stoi(string(dataHoraSemAspas,17,2));
+            }
+            catch(...)
+            {
+                ano = 1900;
+                mes = 1;
+                dia = 1;
+
+                hora = 12;
+                minuto = 0;
+                segundo = 0;
+            }
 
             mDataHoraNormalizada = QDateTime(QDate(ano, mes, dia),QTime(hora, minuto, segundo));
 
             atualizarTabelaHoraVerao();
-            short inc =
+
+            inc =
                     (mMapUfHorarioVerao.find(retirarAspas(mUfServidor)) != mMapUfHorarioVerao.end() ? mMapUfGmt[retirarAspas(mUfServidor)] + mMapUfHorarioVerao[retirarAspas(mUfServidor)] : mMapUfGmt[retirarAspas(mUfServidor)])
                    - (mMapUfHorarioVerao.find(retirarAspas(mUfCliente)) != mMapUfHorarioVerao.end() ? mMapUfGmt[retirarAspas(mUfCliente)] + mMapUfHorarioVerao[retirarAspas(mUfCliente)] : mMapUfGmt[retirarAspas(mUfCliente)]);
 
@@ -74,7 +131,50 @@ void PMT::normalizarDataHora()
         }
 
         break;
-    case NETMETRICS:
+    case NETMETRICS: //DD/MM/AAAA HH:MM:SS
+
+
+        if(dataHoraSemAspas.size() != 19)
+        {
+            cout << "Data fora do formato!";
+        }
+        else
+        {
+
+
+            try
+            {
+                ano = stoi(string(dataHoraSemAspas,6,4));
+                mes = stoi(string(dataHoraSemAspas,3,2));
+                dia = stoi(string(dataHoraSemAspas,0,2));
+
+                hora = stoi(string(dataHoraSemAspas,11,2));
+                minuto = stoi(string(dataHoraSemAspas,14,2));
+                segundo = stoi(string(dataHoraSemAspas,17,2));
+            }
+            catch(...)
+            {
+                ano = 1900;
+                mes = 1;
+                dia = 1;
+
+                hora = 12;
+                minuto = 0;
+                segundo = 0;
+            }
+
+            mDataHoraNormalizada = QDateTime(QDate(ano, mes, dia),QTime(hora, minuto, segundo));
+
+            atualizarTabelaHoraVerao();
+
+            inc =
+                    (mMapUfHorarioVerao.find(retirarAspas(mUfServidor)) != mMapUfHorarioVerao.end() ? mMapUfGmt[retirarAspas(mUfServidor)] + mMapUfHorarioVerao[retirarAspas(mUfServidor)] : mMapUfGmt[retirarAspas(mUfServidor)])
+                   - (mMapUfHorarioVerao.find(retirarAspas(mUfCliente)) != mMapUfHorarioVerao.end() ? mMapUfGmt[retirarAspas(mUfCliente)] + mMapUfHorarioVerao[retirarAspas(mUfCliente)] : mMapUfGmt[retirarAspas(mUfCliente)]);
+
+
+            //Add o incremento
+            mDataHoraNormalizada = mDataHoraNormalizada.addSecs(inc*3600);
+        }
 
         break;
     case SEMIGLOBE: //MM/DD/AAAA HH:MM SEMIGLOBE
@@ -85,19 +185,33 @@ void PMT::normalizarDataHora()
         }
         else
         {
-            int ano = stoi(string(dataHoraSemAspas,6,4));
-            int mes = stoi(string(dataHoraSemAspas,0,2));
-            int dia = stoi(string(dataHoraSemAspas,3,2));
 
-            int hora = stoi(string(dataHoraSemAspas,11,2));
-            int minuto = stoi(string(dataHoraSemAspas,14,2));
-            int segundo = 0;
+            try
+            {
+                ano = stoi(string(dataHoraSemAspas,6,4));
+                mes = stoi(string(dataHoraSemAspas,0,2));
+                dia = stoi(string(dataHoraSemAspas,3,2));
+
+                hora = stoi(string(dataHoraSemAspas,11,2));
+                minuto = stoi(string(dataHoraSemAspas,14,2));
+                segundo = 0;
+            }
+            catch(...)
+            {
+                ano = 1900;
+                mes = 1;
+                dia = 1;
+
+                hora = 12;
+                minuto = 0;
+                segundo = 0;
+            }
 
             mDataHoraNormalizada = QDateTime(QDate(ano, mes, dia),QTime(hora, minuto, segundo));
 
             atualizarTabelaHoraVerao();
 
-            short inc =
+            inc =
                     (mMapUfHorarioVerao.find(retirarAspas(mUfServidor)) != mMapUfHorarioVerao.end() ? mMapUfGmt[retirarAspas(mUfServidor)] + mMapUfHorarioVerao[retirarAspas(mUfServidor)] : mMapUfGmt[retirarAspas(mUfServidor)])
                    - (mMapUfHorarioVerao.find(retirarAspas(mUfCliente)) != mMapUfHorarioVerao.end() ? mMapUfGmt[retirarAspas(mUfCliente)] + mMapUfHorarioVerao[retirarAspas(mUfCliente)] : mMapUfGmt[retirarAspas(mUfCliente)]);
 
@@ -145,3 +259,5 @@ void PMT::atualizarTabelaHoraVerao()
 }
 
 }
+
+
