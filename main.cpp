@@ -2,6 +2,7 @@
 #include "pmt.h"
 #include <QTime>
 #include <QDebug>
+#include <logbox.h>
 
 
 using namespace std;

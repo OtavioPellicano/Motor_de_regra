@@ -4,7 +4,9 @@ CONFIG -= app_bundle
 CONFIG += qt
 
 SOURCES += main.cpp \
-    pmt.cpp
+    pmt.cpp \
+    logbox.cpp
 
 HEADERS += \
-    pmt.h
+    pmt.h \
+    logbox.h
