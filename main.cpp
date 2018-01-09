@@ -3,7 +3,7 @@
 #include <QTime>
 #include <QDebug>
 #include <logbox.h>
-
+#include <paridadedownup.h>
 
 using namespace std;
 
@@ -34,6 +34,17 @@ int main()
     {
         qDebug() << "Fora do PMT";
     }
+
+
+    if (opmm::ParidadeDownUp("##", "3.543").medicaoValida())
+    {
+        qDebug() << "Paridade valida!";
+    }
+    else
+    {
+        qDebug() << "Paridade invalida!";
+    }
+
 
     return 0;
 }
