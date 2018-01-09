@@ -15,6 +15,12 @@ typedef map<string, short> mapStrSht;
 typedef map<string, bool> mapStrBool;
 
 
+/**
+ * @brief The PMT class
+ * Classe destinada a validacao da data da medida,
+ * verificando se a dataHora está em um range definido
+ */
+
 class PMT
 {
 

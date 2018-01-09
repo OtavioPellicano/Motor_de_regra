@@ -8,10 +8,19 @@ LogBox::LogBox(QObject *parent) : QObject(parent)
 {
 
 }
-
+/**
+ * @brief LogBox::operator <<
+ * @param str
+ * use to populate mLogList
+ */
 void LogBox::operator <<(const QString &str)
 {
     mLogList << str;
+}
+
+void LogBox::clear()
+{
+    mLogList.clear();
 }
 
 QString LogBox::logStr()
@@ -34,6 +43,16 @@ QString LogBox::logStr()
     }
 
     return mLog;
+}
+
+QStringList LogBox::logList() const
+{
+    return mLogList;
+}
+
+void LogBox::setLogList(const QStringList &logList)
+{
+    mLogList = logList;
 }
 
 

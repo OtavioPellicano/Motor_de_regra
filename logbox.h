@@ -8,7 +8,10 @@
 
 namespace opmm {
 
-
+/**
+ * @brief The LogBox class
+ * Classe destinada ao armazenamento de logs do sistema
+ */
 class LogBox : public QObject
 {
     Q_OBJECT
@@ -17,7 +20,12 @@ public:
 
     void operator <<(const QString &str);
 
+    void clear();
+
     QString logStr();
+
+    QStringList logList() const;
+    void setLogList(const QStringList &logList);
 
 signals:
 
