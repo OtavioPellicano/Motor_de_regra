@@ -6,9 +6,11 @@ CONFIG += qt
 SOURCES += main.cpp \
     pmt.cpp \
     logbox.cpp \
-    paridadedownup.cpp
+    paridadedownup.cpp \
+    medicaocomfalha.cpp
 
 HEADERS += \
     pmt.h \
     logbox.h \
-    paridadedownup.h
+    paridadedownup.h \
+    medicaocomfalha.h

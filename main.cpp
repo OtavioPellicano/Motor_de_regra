@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <logbox.h>
 #include <paridadedownup.h>
+#include <medicaocomfalha.h>
 
 using namespace std;
 
@@ -43,6 +44,16 @@ int main()
     else
     {
         qDebug() << "Paridade invalida!";
+    }
+
+
+    if(opmm::MedicaoComFalha("7.43").medicaoValida())
+    {
+        qDebug() << "Medicao valida!";
+    }
+    else
+    {
+        qDebug() << "Medicao invalida!";
     }
 
 
