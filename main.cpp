@@ -7,15 +7,15 @@
 
 #include "logbox.h"
 
-#include "medicaocomfalha.h"        //#3
-#include "avaliacaodasfalhas.h"     //#4
-#include "paridadedownup.h"         //#6
-#include "pmt.h"                    //#7
-#include "pingbackdivergente.h"     //#8
-#include "solucoeshomologadas.h"    //#9
-#include "pttnaocadastrado.h"       //#26
+#include "medicaocomfalha.h"        //#3 SCM
+#include "avaliacaodasfalhas.h"     //#4 SCM
+#include "paridadedownup.h"         //#6 SCM
+#include "pmt.h"                    //#7 SCM SMP
+#include "pingbackdivergente.h"     //#8 SCM SMP
+#include "solucoeshomologadas.h"    //#9 SCM
+#include "pttnaocadastrado.h"       //#26 SCM SMP
 
-
+#include "avaliacaodostatus.h"      //#9 SMP
 
 using namespace std;
 
@@ -122,6 +122,16 @@ int main()
     else
     {
         qDebug() << "Ptt nao cadastrado";
+    }
+
+
+    if(opmm::AvaliacaoDoStatus("Cancelled").medicaoValida())
+    {
+        qDebug() << "Status Ok";
+    }
+    else
+    {
+        qDebug() << "Status Nao Ok";
     }
 
 
