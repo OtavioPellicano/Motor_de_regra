@@ -1,17 +1,19 @@
 #include <iostream>
-#include "pmt.h"
+
 #include <QTime>
 #include <QDebug>
 #include <vector>
 #include <string>
 
-#include <logbox.h>
+#include "logbox.h"
 
-#include <paridadedownup.h>
-#include <medicaocomfalha.h>
-#include <avaliacaodasfalhas.h>
-#include <pingbackdivergente.h>
-#include <solucoeshomologadas.h>
+#include "medicaocomfalha.h"        //#3
+#include "avaliacaodasfalhas.h"     //#4
+#include "paridadedownup.h"         //#6
+#include "pmt.h"                    //#7
+#include "pingbackdivergente.h"     //#8
+#include "solucoeshomologadas.h"    //#9
+#include "pttnaocadastrado.h"       //#26
 
 
 
@@ -93,9 +95,9 @@ int main()
 
 
     vector<string> listHomologados;
-    ipsPrestados.push_back("3");
-    ipsPrestados.push_back("5");
-    ipsPrestados.push_back("7.43");
+    listHomologados.push_back("3");
+    listHomologados.push_back("5");
+    listHomologados.push_back("7.43");
 
 
     if(opmm::SolucoesHomologadas("3",listHomologados).medicaoValida())
@@ -106,6 +108,26 @@ int main()
     {
         qDebug() << "Software nao Homologado!";
     }
+
+
+    vector<string> listPttCadastrado;
+    listPttCadastrado.push_back("192.168.1.7");
+    listPttCadastrado.push_back("192.168.1.5");
+    listPttCadastrado.push_back("192.168.1.3");
+
+    if(opmm::PttNaoCadastrado("192.168.1.5", listPttCadastrado).medicaoValida())
+    {
+        qDebug() << "Ptt cadastrado";
+    }
+    else
+    {
+        qDebug() << "Ptt nao cadastrado";
+    }
+
+
+
+
+
 
     return 0;
 }
