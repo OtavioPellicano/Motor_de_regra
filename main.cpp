@@ -2,10 +2,15 @@
 #include "pmt.h"
 #include <QTime>
 #include <QDebug>
+#include <vector>
+#include <string>
 #include <logbox.h>
 #include <paridadedownup.h>
 #include <medicaocomfalha.h>
 #include <avaliacaodasfalhas.h>
+#include <pingbackdivergente.h>
+
+
 
 using namespace std;
 
@@ -66,6 +71,22 @@ int main()
         qDebug() << "Avaliacao das falhas invalida!";
     }
 
+
+    vector<string> ipsPrestados;
+    ipsPrestados.push_back("192.168.1.1");
+    ipsPrestados.push_back("192.168.1.2");
+    ipsPrestados.push_back("192.168.1.3");
+    ipsPrestados.push_back("192.168.1.4");
+    ipsPrestados.push_back("192.168.1.5");
+
+    if(opmm::PingBackDivergente("192.168.0.1",ipsPrestados).medidaValida())
+    {
+        qDebug() << "Ping Back Convergente";
+    }
+    else
+    {
+        qDebug() << "Ping Back Divergente";
+    }
 
 
     return 0;

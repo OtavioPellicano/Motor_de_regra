@@ -8,11 +8,13 @@ SOURCES += main.cpp \
     logbox.cpp \
     paridadedownup.cpp \
     medicaocomfalha.cpp \
-    avaliacaodasfalhas.cpp
+    avaliacaodasfalhas.cpp \
+    pingbackdivergente.cpp
 
 HEADERS += \
     pmt.h \
     logbox.h \
     paridadedownup.h \
     medicaocomfalha.h \
-    avaliacaodasfalhas.h
+    avaliacaodasfalhas.h \
+    pingbackdivergente.h
