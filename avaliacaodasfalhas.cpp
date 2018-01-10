@@ -2,7 +2,7 @@
 
 namespace opmm {
 
-AvaliacaoDasFalhas::AvaliacaoDasFalhas(std::string sucesso, std::string falha)
+AvaliacaoDasFalhas::AvaliacaoDasFalhas(const std::string &sucesso, const std::string &falha)
 {
 
     try {

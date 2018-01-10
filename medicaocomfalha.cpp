@@ -3,7 +3,7 @@
 namespace opmm {
 
 
-MedicaoComFalha::MedicaoComFalha(std::string medicao)
+MedicaoComFalha::MedicaoComFalha(const std::string &medicao)
 {
     try {
         mMedicao = std::stod(medicao);

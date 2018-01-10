@@ -2,7 +2,7 @@
 
 namespace opmm {
 
-ParidadeDownUp::ParidadeDownUp(std::string medidaDown, std::string medidaUp)
+ParidadeDownUp::ParidadeDownUp(const std::string &medidaDown, const std::string &medidaUp)
 {
     try {
         mDown = std::stod(medidaDown);

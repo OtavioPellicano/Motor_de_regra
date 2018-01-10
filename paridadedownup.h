@@ -15,7 +15,7 @@ namespace opmm {
 class ParidadeDownUp
 {
 public:
-    ParidadeDownUp(std::string medidaDown, std::string medidaUp);
+    ParidadeDownUp(const std::string &medidaDown, const std::string &medidaUp);
 
     bool medicaoValida();
 

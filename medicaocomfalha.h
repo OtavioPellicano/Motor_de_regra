@@ -16,7 +16,7 @@ namespace opmm {
 class MedicaoComFalha
 {
 public:
-    MedicaoComFalha(std::string medicao);
+    MedicaoComFalha(const std::string &medicao);
 
     bool medicaoValida() const;
 

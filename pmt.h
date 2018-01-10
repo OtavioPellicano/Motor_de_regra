@@ -25,7 +25,8 @@ class PMT
 {
 
 public: //Métodos Públicos
-    PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLayout, QTime horaInicio = QTime(10,0,0),
+    PMT(const string &dataHoraRef, const string &ufServidor, const string &ufCliente,
+        const layout &tipoLayout, QTime horaInicio = QTime(10,0,0),
         QTime horaFinal = QTime(22,0,0));
 
     bool medicaoValida();

@@ -2,7 +2,7 @@
 
 namespace opmm {
 
-PMT::PMT(string dataHoraRef, string ufServidor, string ufCliente, layout tipoLayout, QTime horaInicio, QTime horaFinal)
+PMT::PMT(const string &dataHoraRef, const string &ufServidor, const string &ufCliente, const layout &tipoLayout, QTime horaInicio, QTime horaFinal)
     :mDataHoraRef(dataHoraRef), mUfServidor(ufServidor), mUfCliente(ufCliente), mTipoLayout(tipoLayout),
       mHoraInicio(horaInicio), mHoraFinal(horaFinal)
 {

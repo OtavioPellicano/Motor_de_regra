@@ -15,7 +15,7 @@ namespace opmm {
 class AvaliacaoDasFalhas
 {
 public:
-    AvaliacaoDasFalhas(std::string sucesso, std::string falha);
+    AvaliacaoDasFalhas(const std::string &sucesso, const std::string &falha);
 
 
     bool medicaoValida() const;
