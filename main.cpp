@@ -5,6 +5,7 @@
 #include <logbox.h>
 #include <paridadedownup.h>
 #include <medicaocomfalha.h>
+#include <avaliacaodasfalhas.h>
 
 using namespace std;
 
@@ -55,6 +56,16 @@ int main()
     {
         qDebug() << "Medicao invalida!";
     }
+
+    if(opmm::AvaliacaoDasFalhas("1", "-2").medicaoValida())
+    {
+        qDebug() << "Avaliacao das falhas valida!";
+    }
+    else
+    {
+        qDebug() << "Avaliacao das falhas invalida!";
+    }
+
 
 
     return 0;
