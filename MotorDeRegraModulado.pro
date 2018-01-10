@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     paridadedownup.cpp \
     medicaocomfalha.cpp \
     avaliacaodasfalhas.cpp \
-    pingbackdivergente.cpp
+    pingbackdivergente.cpp \
+    solucoeshomologadas.cpp
 
 HEADERS += \
     pmt.h \
@@ -17,4 +18,5 @@ HEADERS += \
     paridadedownup.h \
     medicaocomfalha.h \
     avaliacaodasfalhas.h \
-    pingbackdivergente.h
+    pingbackdivergente.h \
+    solucoeshomologadas.h

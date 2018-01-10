@@ -7,23 +7,23 @@ PingBackDivergente::PingBackDivergente(const std::string &ipColetor, const std::
 
     if(std::find(ipsPrestadora.begin(), ipsPrestadora.end(), ipColetor) != ipsPrestadora.end())
     {
-        setMedidaValida(true);
+        setMedicaoValida(true);
     }
     else
     {
-        setMedidaValida(false);
+        setMedicaoValida(false);
     }
 
 }
 
-bool PingBackDivergente::medidaValida() const
+bool PingBackDivergente::medicaoValida() const
 {
-    return mMedidaValida;
+    return mMedicaoValida;
 }
 
-void PingBackDivergente::setMedidaValida(const bool &medidaValida)
+void PingBackDivergente::setMedicaoValida(const bool &medidaValida)
 {
-    mMedidaValida = medidaValida;
+    mMedicaoValida = medidaValida;
 }
 
 

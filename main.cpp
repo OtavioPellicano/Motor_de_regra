@@ -4,11 +4,14 @@
 #include <QDebug>
 #include <vector>
 #include <string>
+
 #include <logbox.h>
+
 #include <paridadedownup.h>
 #include <medicaocomfalha.h>
 #include <avaliacaodasfalhas.h>
 #include <pingbackdivergente.h>
+#include <solucoeshomologadas.h>
 
 
 
@@ -79,7 +82,7 @@ int main()
     ipsPrestados.push_back("192.168.1.4");
     ipsPrestados.push_back("192.168.1.5");
 
-    if(opmm::PingBackDivergente("192.168.0.1",ipsPrestados).medidaValida())
+    if(opmm::PingBackDivergente("192.168.0.1",ipsPrestados).medicaoValida())
     {
         qDebug() << "Ping Back Convergente";
     }
@@ -88,6 +91,21 @@ int main()
         qDebug() << "Ping Back Divergente";
     }
 
+
+    vector<string> listHomologados;
+    ipsPrestados.push_back("3");
+    ipsPrestados.push_back("5");
+    ipsPrestados.push_back("7.43");
+
+
+    if(opmm::SolucoesHomologadas("3",listHomologados).medicaoValida())
+    {
+        qDebug() << "Software Homologado";
+    }
+    else
+    {
+        qDebug() << "Software nao Homologado!";
+    }
 
     return 0;
 }

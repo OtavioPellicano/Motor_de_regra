@@ -18,18 +18,18 @@ class PingBackDivergente
 public:
     PingBackDivergente(const std::string &ipColetor, const std::vector<std::string> &ipsPrestadora);
 
-    bool medidaValida() const;
+    bool medicaoValida() const;
 
 private:
 
-    void setMedidaValida(const bool &medidaValida);
+    void setMedicaoValida(const bool &medicaoValida);
 
 private:
 
     std::string mIpColetor;
     std::string mIpPrestadora;
 
-    bool mMedidaValida;
+    bool mMedicaoValida;
 
 
 };
