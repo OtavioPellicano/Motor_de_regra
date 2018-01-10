@@ -4,16 +4,16 @@ namespace opmm {
 
 PingBackDivergente::PingBackDivergente(const std::string &ipColetor, const std::vector<std::string> &ipsPrestadora)
 {
-    for(std::vector<std::string>::const_iterator itVec = ipsPrestadora.begin(); itVec != ipsPrestadora.end(); ++itVec)
+
+    if(std::find(ipsPrestadora.begin(), ipsPrestadora.end(), ipColetor) != ipsPrestadora.end())
     {
-        if((*itVec) == ipColetor)
-        {
-            setMedidaValida(true);
-            return;
-        }
+        setMedidaValida(true);
+    }
+    else
+    {
+        setMedidaValida(false);
     }
 
-    setMedidaValida(false);
 }
 
 bool PingBackDivergente::medidaValida() const
@@ -21,7 +21,7 @@ bool PingBackDivergente::medidaValida() const
     return mMedidaValida;
 }
 
-void PingBackDivergente::setMedidaValida(bool medidaValida)
+void PingBackDivergente::setMedidaValida(const bool &medidaValida)
 {
     mMedidaValida = medidaValida;
 }

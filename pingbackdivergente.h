@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
 
 namespace opmm {
 
@@ -21,7 +22,7 @@ public:
 
 private:
 
-    void setMedidaValida(bool medidaValida);
+    void setMedidaValida(const bool &medidaValida);
 
 private:
 
