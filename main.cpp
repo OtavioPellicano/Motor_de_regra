@@ -7,14 +7,16 @@
 
 #include "logbox.h"
 
-#include "medicaocomfalha.h"        //#3 SCM
+//Numeracao SCM
+#include "medicaocomfalha.h"        //#3* SCM SMP
 #include "avaliacaodasfalhas.h"     //#4 SCM
-#include "paridadedownup.h"         //#6 SCM
+#include "paridadedownup.h"         //#6 SCM SMP
 #include "pmt.h"                    //#7 SCM SMP
 #include "pingbackdivergente.h"     //#8 SCM SMP
 #include "solucoeshomologadas.h"    //#9 SCM
 #include "pttnaocadastrado.h"       //#26 SCM SMP
 
+//Numeracao SMP
 #include "avaliacaodostatus.h"      //#9 SMP
 
 using namespace std;

@@ -18,16 +18,6 @@ SolucoesHomologadas::SolucoesHomologadas(const std::string &versaoSoftware, cons
 
 }
 
-bool SolucoesHomologadas::medicaoValida() const
-{
-    return mMedicaoValida;
-}
-
-void SolucoesHomologadas::setMedicaoValida(const bool &medicaoValida)
-{
-    mMedicaoValida = medicaoValida;
-}
-
 
 }
 

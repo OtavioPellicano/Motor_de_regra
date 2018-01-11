@@ -2,7 +2,7 @@
 #define MEDICAOCOMFALHA_H
 #include <string>
 
-
+#include "validade.h"
 
 namespace opmm {
 
@@ -13,21 +13,12 @@ namespace opmm {
  * os registros que apresentarem medição com
  * falha deve ser descartada
  */
-class MedicaoComFalha
+class MedicaoComFalha: public Validade
 {
 public:
     MedicaoComFalha(const std::string &medicao);
 
-    bool medicaoValida() const;
-
 private:
-
-    void setMedicaoValida(const bool &medicaoValida);
-
-
-private:
-
-    bool mMedicaoValida;
 
     double mMedicao;
 

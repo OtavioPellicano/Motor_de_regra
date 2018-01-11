@@ -2,6 +2,7 @@
 #define AVALIACAODASFALHAS_H
 
 #include <string>
+#include "validade.h"
 
 namespace opmm {
 
@@ -12,18 +13,12 @@ namespace opmm {
  * forem menores ou iguais a 0 ou quando o campo falha for menor que 0
  */
 
-class AvaliacaoDasFalhas
+class AvaliacaoDasFalhas : public Validade
 {
 public:
     AvaliacaoDasFalhas(const std::string &sucesso, const std::string &falha);
 
-
-    bool medicaoValida() const;
-    void setMedicaoValida(const bool &medicaoValida);
-
 private:
-
-    bool mMedicaoValida;
 
     double mSucesso;
     double mFalha;

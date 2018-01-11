@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "validade.h"
 
 namespace opmm {
 
@@ -12,19 +13,10 @@ namespace opmm {
  * Serão excluídas as medições que o campo referente ao PTT
  * usado para o teste não esteja previamente cadastrado no sistema.
  */
-class PttNaoCadastrado
+class PttNaoCadastrado  : public Validade
 {
 public:
     PttNaoCadastrado(const std::string &medicao, const std::vector<std::string> &pttsCadastados);
-
-    bool medicaoValida() const;
-
-private:
-    void setMedicaoValida(const bool &medicaoValida);
-
-private:
-    bool mMedicaoValida;
-
 
 };
 

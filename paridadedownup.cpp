@@ -15,15 +15,6 @@ ParidadeDownUp::ParidadeDownUp(const std::string &medidaDown, const std::string 
 
 }
 
-bool ParidadeDownUp::medicaoValida()
-{
-    return mMedicaoValida;
-}
-
-void ParidadeDownUp::setMedicaoValida(const bool &medicaoValida)
-{
-    mMedicaoValida = medicaoValida;
-}
 
 }
 

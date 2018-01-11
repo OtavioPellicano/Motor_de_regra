@@ -2,6 +2,7 @@
 #define PARIDADEDOWNUP_H
 
 #include <string>
+#include "validade.h"
 
 namespace opmm {
 
@@ -12,22 +13,13 @@ namespace opmm {
  * o retorno do metodo medicaoValida retorna falso
  */
 
-class ParidadeDownUp
+class ParidadeDownUp : public Validade
 {
 public:
     ParidadeDownUp(const std::string &medidaDown, const std::string &medidaUp);
 
-    bool medicaoValida();
-
-
-private:
-
-    void setMedicaoValida(const bool &medicaoValida);
-
-    bool mMedicaoValida;
     double mDown;
     double mUp;
-
 
 };
 

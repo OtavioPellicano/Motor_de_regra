@@ -16,15 +16,5 @@ PttNaoCadastrado::PttNaoCadastrado(const std::string &medicao, const std::vector
 
 }
 
-bool PttNaoCadastrado::medicaoValida() const
-{
-    return mMedicaoValida;
-}
-
-void PttNaoCadastrado::setMedicaoValida(const bool &medicaoValida)
-{
-    mMedicaoValida = medicaoValida;
-}
-
 
 }

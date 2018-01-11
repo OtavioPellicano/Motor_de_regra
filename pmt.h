@@ -6,6 +6,7 @@
 #include <QDateTime>
 #include <map>
 #include <QTime>
+#include "validade.h"
 
 namespace opmm {
 
@@ -21,7 +22,7 @@ typedef map<string, bool> mapStrBool;
  * verificando se a dataHora está em um range definido
  */
 
-class PMT
+class PMT: public Validade
 {
 
 public: //Métodos Públicos

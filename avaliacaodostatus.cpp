@@ -16,15 +16,4 @@ AvaliacaoDoStatus::AvaliacaoDoStatus(const std::string &serviceStatus)
     }
 }
 
-bool AvaliacaoDoStatus::medicaoValida() const
-{
-    return mMedicaoValida;
-}
-
-void AvaliacaoDoStatus::setMedicaoValida(const bool &medicaoValida)
-{
-    mMedicaoValida = medicaoValida;
-}
-
-
 }

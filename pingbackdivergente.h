@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "validade.h"
 
 namespace opmm {
 
@@ -13,24 +14,16 @@ namespace opmm {
  * a prestadora. Caso seja identificada que a medição é de prestadora
  * diferente, a mesma é descartada do índice.
  */
-class PingBackDivergente
+class PingBackDivergente: public Validade
 {
 public:
     PingBackDivergente(const std::string &ipColetor, const std::vector<std::string> &ipsPrestadora);
 
-    bool medicaoValida() const;
-
-private:
-
-    void setMedicaoValida(const bool &medicaoValida);
 
 private:
 
     std::string mIpColetor;
     std::string mIpPrestadora;
-
-    bool mMedicaoValida;
-
 
 };
 

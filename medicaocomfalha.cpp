@@ -14,16 +14,4 @@ MedicaoComFalha::MedicaoComFalha(const std::string &medicao)
     setMedicaoValida(true);
 }
 
-bool MedicaoComFalha::medicaoValida() const
-{
-    return mMedicaoValida;
-}
-
-void MedicaoComFalha::setMedicaoValida(const bool &medicaoValida)
-{
-    mMedicaoValida = medicaoValida;
-}
-
-
-
 }

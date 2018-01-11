@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     pingbackdivergente.cpp \
     solucoeshomologadas.cpp \
     pttnaocadastrado.cpp \
-    avaliacaodostatus.cpp
+    avaliacaodostatus.cpp \
+    validade.cpp
 
 HEADERS += \
     pmt.h \
@@ -23,4 +24,5 @@ HEADERS += \
     pingbackdivergente.h \
     solucoeshomologadas.h \
     pttnaocadastrado.h \
-    avaliacaodostatus.h
+    avaliacaodostatus.h \
+    validade.h

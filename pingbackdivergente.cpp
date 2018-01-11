@@ -16,16 +16,5 @@ PingBackDivergente::PingBackDivergente(const std::string &ipColetor, const std::
 
 }
 
-bool PingBackDivergente::medicaoValida() const
-{
-    return mMedicaoValida;
-}
-
-void PingBackDivergente::setMedicaoValida(const bool &medidaValida)
-{
-    mMedicaoValida = medidaValida;
-}
-
-
 }
 

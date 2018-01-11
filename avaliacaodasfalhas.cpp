@@ -29,15 +29,6 @@ AvaliacaoDasFalhas::AvaliacaoDasFalhas(const std::string &sucesso, const std::st
 
 }
 
-bool AvaliacaoDasFalhas::medicaoValida() const
-{
-    return mMedicaoValida;
-}
-
-void AvaliacaoDasFalhas::setMedicaoValida(const bool &medicaoValida)
-{
-    mMedicaoValida = medicaoValida;
-}
 
 
 }
