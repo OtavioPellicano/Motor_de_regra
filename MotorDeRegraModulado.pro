@@ -16,7 +16,9 @@ SOURCES += main.cpp \
     validade.cpp \
     avaliacaodacpu.cpp \
     listadeexcecao.cpp \
-    tabeladeassinantes.cpp
+    tabeladeassinantes.cpp \
+    regrasscm.cpp \
+    StringCsv.cpp
 
 HEADERS += \
     pmt.h \
@@ -31,4 +33,6 @@ HEADERS += \
     validade.h \
     avaliacaodacpu.h \
     listadeexcecao.h \
-    tabeladeassinantes.h
+    tabeladeassinantes.h \
+    regrasscm.h \
+    StringCsv.h
