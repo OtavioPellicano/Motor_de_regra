@@ -20,6 +20,8 @@ typedef map<string, bool> mapStrBool;
  * @brief The PMT class
  * Classe destinada a validacao da data da medida,
  * verificando se a dataHora está em um range definido
+ * ATENCAO! O HORÁRIO DE VERAO DE LONDRES ESTÁ DEFINIDO
+ * COMO IGUAL AO HORÁRIO DE VERAO DO BRASIL
  */
 
 class PMT: public Validade
@@ -71,7 +73,8 @@ private: //Variaveis Privadas
         {"SC", -3},
         {"SE", -3},
         {"SP", -3},
-        {"TO", -3}
+        {"TO", -3},
+        {"LD", 0}
     };
 
     mapStrSht mMapUfHorarioVerao
@@ -86,7 +89,8 @@ private: //Variaveis Privadas
         {"RJ", 0},
         {"RS", 0},
         {"SC", 0},
-        {"SP", 0}
+        {"SP", 0},
+        {"LD", 0}
     };
 
 private: //Métodos Privados
