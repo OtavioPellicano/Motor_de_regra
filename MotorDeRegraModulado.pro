@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     solucoeshomologadas.cpp \
     pttnaocadastrado.cpp \
     avaliacaodostatus.cpp \
-    validade.cpp
+    validade.cpp \
+    avaliacaodacpu.cpp
 
 HEADERS += \
     pmt.h \
@@ -25,4 +26,5 @@ HEADERS += \
     solucoeshomologadas.h \
     pttnaocadastrado.h \
     avaliacaodostatus.h \
-    validade.h
+    validade.h \
+    avaliacaodacpu.h

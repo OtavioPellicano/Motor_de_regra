@@ -18,6 +18,7 @@
 
 //Numeracao SMP
 #include "avaliacaodostatus.h"      //#9 SMP
+#include "avaliacaodacpu.h"         //#11 SMP
 
 using namespace std;
 
@@ -134,6 +135,16 @@ int main()
     else
     {
         qDebug() << "Status Nao Ok";
+    }
+
+
+    if(opmm::AvaliacaoDaCpu(".79",false).medicaoValida())
+    {
+        qDebug() << "Avaliacao da CPU OK!";
+    }
+    else
+    {
+        qDebug() << "Avaliacao da CPU ERRO!";
     }
 
 
