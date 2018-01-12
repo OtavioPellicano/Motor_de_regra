@@ -256,6 +256,30 @@ void PMT::atualizarTabelaHoraVerao()
             itMap->second = 0;
         }
     }
+
+
+    //Horario de verao de Londres
+    if (mDataHoraNormalizada >= QDateTime(QDate(2017, 3, 26), QTime(1, 0, 0))
+            && mDataHoraNormalizada <= QDateTime(QDate(2017, 10, 29), QTime(2, 0, 0)))
+    {
+        mMapUfHorarioVerao["LD"] = 1;
+    }
+    else if (mDataHoraNormalizada >= QDateTime(QDate(2018, 3, 25), QTime(1, 0, 0))
+            && mDataHoraNormalizada <= QDateTime(QDate(2018, 10, 28), QTime(2, 0, 0)))
+    {
+        mMapUfHorarioVerao["LD"] = 1;
+    }
+    else if (mDataHoraNormalizada >= QDateTime(QDate(2019, 3, 31), QTime(1, 0, 0))
+            && mDataHoraNormalizada <= QDateTime(QDate(2019, 10, 27), QTime(2, 0, 0)))
+    {
+        mMapUfHorarioVerao["LD"] = 1;
+    }
+    else
+    {
+        mMapUfHorarioVerao["LD"] = 0;
+    }
+
+
 }
 
 }
