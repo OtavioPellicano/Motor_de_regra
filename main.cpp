@@ -14,6 +14,7 @@
 #include "pmt.h"                    //#7 SCM SMP
 #include "pingbackdivergente.h"     //#8 SCM SMP
 #include "solucoeshomologadas.h"    //#9 SCM
+#include "listadeexcecao.h"         //#21 SCM
 #include "pttnaocadastrado.h"       //#26 SCM SMP
 
 //Numeracao SMP
@@ -147,6 +148,20 @@ int main()
         qDebug() << "Avaliacao da CPU ERRO!";
     }
 
+
+    vector<string> listaExcecao;
+    listaExcecao.push_back("192.168.1.7");
+    listaExcecao.push_back("192.168.1.5");
+    listaExcecao.push_back("192.168.1.3");
+
+    if(opmm::ListaDeExcecao("192.168.1.8", listaExcecao).medicaoValida())
+    {
+        qDebug() << "(Lista de excecao) Medida NAO retirada";
+    }
+    else
+    {
+        qDebug() << "(Lista de excecao) Medida retirada";
+    }
 
 
 

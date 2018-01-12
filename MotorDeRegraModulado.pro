@@ -14,7 +14,8 @@ SOURCES += main.cpp \
     pttnaocadastrado.cpp \
     avaliacaodostatus.cpp \
     validade.cpp \
-    avaliacaodacpu.cpp
+    avaliacaodacpu.cpp \
+    listadeexcecao.cpp
 
 HEADERS += \
     pmt.h \
@@ -27,4 +28,5 @@ HEADERS += \
     pttnaocadastrado.h \
     avaliacaodostatus.h \
     validade.h \
-    avaliacaodacpu.h
+    avaliacaodacpu.h \
+    listadeexcecao.h
