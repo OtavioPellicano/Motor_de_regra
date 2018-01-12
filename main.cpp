@@ -14,7 +14,8 @@
 #include "pmt.h"                    //#7 SCM SMP
 #include "pingbackdivergente.h"     //#8 SCM SMP
 #include "solucoeshomologadas.h"    //#9 SCM
-#include "listadeexcecao.h"         //#21 SCM
+#include "tabeladeassinantes.h"     //#20 SCM
+#include "listadeexcecao.h"         //#21 SCM SMP
 #include "pttnaocadastrado.h"       //#26 SCM SMP
 
 //Numeracao SMP
@@ -161,6 +162,21 @@ int main()
     else
     {
         qDebug() << "(Lista de excecao) Medida retirada";
+    }
+
+
+    vector<string> listaAssinantes;
+    listaAssinantes.push_back("otavio");
+    listaAssinantes.push_back("pellicano");
+
+
+    if(opmm::TabelaDeAssinantes("otavo", listaAssinantes).medicaoValida())
+    {
+        qDebug() << "(Tabela de Assinantes) encontrado!";
+    }
+    else
+    {
+        qDebug() << "(Tabela de Assinantes) NAO encontrado!";
     }
 
 

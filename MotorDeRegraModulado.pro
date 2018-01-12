@@ -15,7 +15,8 @@ SOURCES += main.cpp \
     avaliacaodostatus.cpp \
     validade.cpp \
     avaliacaodacpu.cpp \
-    listadeexcecao.cpp
+    listadeexcecao.cpp \
+    tabeladeassinantes.cpp
 
 HEADERS += \
     pmt.h \
@@ -29,4 +30,5 @@ HEADERS += \
     avaliacaodostatus.h \
     validade.h \
     avaliacaodacpu.h \
-    listadeexcecao.h
+    listadeexcecao.h \
+    tabeladeassinantes.h
