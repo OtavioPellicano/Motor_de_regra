@@ -14,7 +14,6 @@ RegrasSCM::RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout)
         setMedidaLatencia(StringCsv(linhaArqCsv).getStrItemStringSplitted(35));
     }
 
-
 }
 
 std::string RegrasSCM::dataHora() const

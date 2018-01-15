@@ -11,7 +11,7 @@
 namespace opmm {
 
 using namespace std;
-enum layout {ABR, TGR, NETMETRICS, SEMIGLOBE};
+enum layout {ABR, TGR, NETMETRICS, SEMIGLOBE, HDM};
 typedef map<string, short> mapStrSht;
 typedef map<string, bool> mapStrBool;
 

@@ -132,6 +132,7 @@ void PMT::normalizarDataHora()
 
         break;
     case NETMETRICS: //DD/MM/AAAA HH:MM:SS
+    case HDM:
 
 
         if(dataHoraSemAspas.size() != 19)
