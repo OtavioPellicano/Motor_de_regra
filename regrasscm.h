@@ -23,7 +23,7 @@ namespace opmm {
  * @brief The RegrasSCM class
  * Classe que agrupa todas as regras de SCM
  */
-class RegrasSCM
+class RegrasSCM : public Validade
 {
     //Funções
 public:
