@@ -47,8 +47,11 @@ public:
     std::string medidaLatencia() const;
     void setMedidaLatencia(const std::string &medidaLatencia);
 
+
 private:
 
+    vecStr pttsCadastrados() const;
+    void setPttsCadastrados(const vecStr &pttsCadastrados);
 
 
     //Variaveis
@@ -58,8 +61,10 @@ private:
     std::string mMedidaUp;  //strCsv[32]
     std::string mMedidaJitter;//strCsv[36]
     std::string mMedidaLatencia;//strCsv[35]
+    std::string mPtt;
 
 
+    vecStr mPttsCadastrados;
 
 };
 

@@ -141,8 +141,6 @@ void PMT::normalizarDataHora()
         }
         else
         {
-
-
             try
             {
                 ano = stoi(string(dataHoraSemAspas,6,4));

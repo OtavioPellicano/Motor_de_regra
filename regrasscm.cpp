@@ -13,6 +13,19 @@ RegrasSCM::RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout)
         setMedidaJitter(StringCsv(linhaArqCsv).getStrItemStringSplitted(36));
         setMedidaLatencia(StringCsv(linhaArqCsv).getStrItemStringSplitted(35));
     }
+    else if(tipoLayout == HDM)
+    {
+//        setDataHora(StringCsv(linhaArqCsv).getStrItemStringSplitted(1));
+//        setMedidaDown(StringCsv(linhaArqCsv).getStrItemStringSplitted(29));
+//        setMedidaUp(StringCsv(linhaArqCsv).getStrItemStringSplitted(32));
+//        setMedidaJitter(StringCsv(linhaArqCsv).getStrItemStringSplitted(36));
+//        setMedidaLatencia(StringCsv(linhaArqCsv).getStrItemStringSplitted(35));
+    }
+    else
+    {
+
+    }
+
 
 }
 
@@ -64,6 +77,16 @@ std::string RegrasSCM::medidaLatencia() const
 void RegrasSCM::setMedidaLatencia(const std::string &medidaLatencia)
 {
     mMedidaLatencia = medidaLatencia;
+}
+
+vecStr RegrasSCM::pttsCadastrados() const
+{
+    return mPttsCadastrados;
+}
+
+void RegrasSCM::setPttsCadastrados(const vecStr &pttsCadastrados)
+{
+    mPttsCadastrados = pttsCadastrados;
 }
 
 
