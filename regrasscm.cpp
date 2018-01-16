@@ -2,11 +2,12 @@
 
 namespace opmm {
 
-RegrasSCM::RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout)
+RegrasSCM::RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout, const indicador &ind)
 {
 
     if(tipoLayout == ABR)
     {
+
         setDataHora(StringCsv(linhaArqCsv).getStrItemStringSplitted(1));
         setMedidaDown(StringCsv(linhaArqCsv).getStrItemStringSplitted(29));
         setMedidaUp(StringCsv(linhaArqCsv).getStrItemStringSplitted(32));
@@ -23,12 +24,28 @@ RegrasSCM::RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout)
     }
 
 
-    //Ordem de validação
-    if (!ParidadeDownUp(medidaDown(), medidaUp()).medicaoValida())
-    {
-        RegrasSCM::setMedicaoValida(false);
-        return;
+    switch (ind) {
+    case SCM_4:
+    case SCM_5:
+
+        if (!ParidadeDownUp(medidaDown(), medidaUp()).medicaoValida())
+        {
+            RegrasSCM::setMedicaoValida(false);
+            return;
+        }
+
+        break;
+    case SCM_6:
+    case SCM_7:
+
+        break;
+    case SCM_9:
+
+        break;
+    default:
+        break;
     }
+
 
     RegrasSCM::setMedicaoValida(true);
 

@@ -193,7 +193,7 @@ int main()
     {
         for(size_t i = 1; getline(arqOrigem, str); ++i )
         {
-            if (opmm::RegrasSCM(str,opmm::layout::ABR).medicaoValida())
+            if (opmm::RegrasSCM(str, opmm::layout::ABR, opmm::indicador::SCM_4).medicaoValida())
             {
                 cout << "Medida Valida!" << endl;
             }

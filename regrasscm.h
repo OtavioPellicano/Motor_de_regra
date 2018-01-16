@@ -23,11 +23,14 @@ namespace opmm {
  * @brief The RegrasSCM class
  * Classe que agrupa todas as regras de SCM
  */
+
+enum indicador{SCM_4, SCM_5, SCM_6, SCM_7, SCM_8, SCM_9};
+
 class RegrasSCM : public Validade
 {
     //Funções
 public:
-    RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout);
+    RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout, const indicador &ind);
 
     //deviceid;timestamp;isp;type;manufacturer;model;software_version;ip_address;test_point;mem_total;mem_free;cpu_usage(%);os_version;os_type;battery_usage(%);cell_id;cell_id_changed;lac;tac;cgi/e-cgi;imei;imsi;network_type;signal_strength;roaming;wan_mode;network_type_changed;download_state;download_filesize_test(Bytes);download_rate(bps);upload_state;upload_filesize_test(Bytes);upload_rate(bps);udp_state;udp_estimated_triffc(Bytes);udp_latency(ms);udp_jitter(ms);udp_packet_loss_percent(%);total_traffic_sent;total_traffic_received;total_traffic;test_origin(APP|PROBE);source(Manual|Auto)
 
