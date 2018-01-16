@@ -15,16 +15,22 @@ RegrasSCM::RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout)
     }
     else if(tipoLayout == HDM)
     {
-//        setDataHora(StringCsv(linhaArqCsv).getStrItemStringSplitted(1));
-//        setMedidaDown(StringCsv(linhaArqCsv).getStrItemStringSplitted(29));
-//        setMedidaUp(StringCsv(linhaArqCsv).getStrItemStringSplitted(32));
-//        setMedidaJitter(StringCsv(linhaArqCsv).getStrItemStringSplitted(36));
-//        setMedidaLatencia(StringCsv(linhaArqCsv).getStrItemStringSplitted(35));
+        setDataHora(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(0));
     }
     else
     {
 
     }
+
+
+    //Ordem de validação
+    if (!ParidadeDownUp(medidaDown(), medidaUp()).medicaoValida())
+    {
+        RegrasSCM::setMedicaoValida(false);
+        return;
+    }
+
+    RegrasSCM::setMedicaoValida(true);
 
 
 }
@@ -47,6 +53,7 @@ std::string RegrasSCM::medidaDown() const
 void RegrasSCM::setMedidaDown(const std::string &medidaDown)
 {
     mMedidaDown = medidaDown;
+    replace(mMedidaDown.begin(), mMedidaDown.end(), ',', '.');
 }
 
 std::string RegrasSCM::medidaUp() const
@@ -57,6 +64,7 @@ std::string RegrasSCM::medidaUp() const
 void RegrasSCM::setMedidaUp(const std::string &medidaUp)
 {
     mMedidaUp = medidaUp;
+    replace(mMedidaUp.begin(), mMedidaUp.end(), ',', '.');
 }
 
 std::string RegrasSCM::medidaJitter() const
@@ -67,6 +75,7 @@ std::string RegrasSCM::medidaJitter() const
 void RegrasSCM::setMedidaJitter(const std::string &medidaJitter)
 {
     mMedidaJitter = medidaJitter;
+    replace(mMedidaJitter.begin(), mMedidaJitter.end(), ',', '.');
 }
 
 std::string RegrasSCM::medidaLatencia() const
@@ -77,6 +86,7 @@ std::string RegrasSCM::medidaLatencia() const
 void RegrasSCM::setMedidaLatencia(const std::string &medidaLatencia)
 {
     mMedidaLatencia = medidaLatencia;
+    replace(mMedidaLatencia.begin(), mMedidaLatencia.end(), ',', '.');
 }
 
 vecStr RegrasSCM::pttsCadastrados() const

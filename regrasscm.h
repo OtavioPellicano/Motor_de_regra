@@ -56,15 +56,24 @@ private:
 
     //Variaveis
 private:
-    std::string mDataHora;  //strCsv[1]
-    std::string mMedidaDown;//strCsv[29]
-    std::string mMedidaUp;  //strCsv[32]
-    std::string mMedidaJitter;//strCsv[36]
-    std::string mMedidaLatencia;//strCsv[35]
+    std::string mDataHora;
+    std::string mMedidaDown;
+    std::string mMedidaUp;
+    std::string mMedidaJitter;
+    std::string mMedidaLatencia;
     std::string mPtt;
+
+    //Variaveis pmt
+    string mUfServidor;
+    string mUfCliente;
+    layout mtipoLayout;
+    QTime horaInicio;
+    QTime horaFinal;
 
 
     vecStr mPttsCadastrados;
+
+
 
 };
 
