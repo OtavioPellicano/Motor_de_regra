@@ -186,28 +186,25 @@ int main()
 //    }
 
 
-    fstream arqOrigem("C:/Users/otaviomello/Documents/ABRTELECOM/Qt Projects/ValidacaoRawData/MotorDeRegra_Modulado/Exemplo de arquivos/Tim-2017-12-01_05.csv");
+  //  fstream arqOrigem("C:/Users/otaviomello/Documents/ABRTELECOM/Qt Projects/ValidacaoRawData/MotorDeRegra_Modulado/Exemplo de arquivos/Tim-2017-12-01_05.csv");
+
+    fstream arqOrigem("C:/Users/otaviomello/Documents/ABRTELECOM/Qt Projects/ValidacaoRawData/MotorDeRegra_Modulado/SCM_4_5/scm4_5_2018-01-01_00_00_01.csv");
+
 
     string str;
     if (arqOrigem.is_open())
     {
         for(size_t i = 1; getline(arqOrigem, str); ++i )
         {
-            if (opmm::RegrasSCM(str, opmm::layout::ABR, opmm::indicador::SCM_4).medicaoValida())
-            {
-                cout << "Medida Valida!" << endl;
-            }
-            else
-            {
-                cout << "Medida Invalida!" << endl;
-            }
+            opmm::RegrasSCM(str, opmm::layout::HDM, opmm::indicador::SCM_4);
+
         }
 
         arqOrigem.close();
     }
     else
     {
-
+        cout << "Impossivel abrir o arquivo de origem" << endl;
     }
 
 
