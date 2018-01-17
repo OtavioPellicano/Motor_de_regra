@@ -5,8 +5,6 @@ namespace opmm {
 NormalizacaoDeDados::NormalizacaoDeDados(const string &linhaArqCsv, const layout &tipoLayout, const indicador &ind)
 {
 
-
-
     if(tipoLayout == ABR)
     {
 
@@ -38,21 +36,27 @@ NormalizacaoDeDados::NormalizacaoDeDados(const string &linhaArqCsv, const layout
         case SCM_6:
             //scm6_7
             setAvgRtt(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(23));
+            setTestPoint(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(19));
 
             break;
         case SCM_7:
             //scm6_7
             setJitter(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(26));
+            setTestPoint(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(19));
 
             break;
         case SCM_8:
             //scm8
             setPacketLossFailure(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(22));
             setPacketLossSuccesses(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(23));
+            setTestPoint(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(19));
+
+            break;
 
         case SCM_9:
             //scm4_5
             setAvailSuccesses(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(29));
+            setTestPoint(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(23));
 
             break;
         default:
@@ -63,6 +67,67 @@ NormalizacaoDeDados::NormalizacaoDeDados(const string &linhaArqCsv, const layout
     }
     else if(tipoLayout == TGR)
     {
+
+        double perdaTotalRtt;
+        double packetLoss;
+        double packetSuccesses;
+        string temp;
+
+        //geral
+        setDateTime(StringCsv(linhaArqCsv).getStrItemStringSplitted(0));
+        setDeciceID(StringCsv(linhaArqCsv).getStrItemStringSplitted(5));
+        setSourcerIPv4(StringCsv(linhaArqCsv).getStrItemStringSplitted(4));
+        setMacAddress(StringCsv(linhaArqCsv).getStrItemStringSplitted(5));
+        setTestPoint(StringCsv(linhaArqCsv).getStrItemStringSplitted(2));
+        setSoftwareVersion(StringCsv(linhaArqCsv).getStrItemStringSplitted(1));
+
+        switch (ind) {
+        case SCM_4:
+        case SCM_5:
+            setSpeedDown(StringCsv(linhaArqCsv).getStrItemStringSplitted(25));
+            setSpeedUp(StringCsv(linhaArqCsv).getStrItemStringSplitted(35));
+
+            break;
+        case SCM_6:
+            setAvgRtt(StringCsv(linhaArqCsv).getStrItemStringSplitted(15));
+
+            break;
+        case SCM_7:
+            //scm6_7
+            setJitter(StringCsv(linhaArqCsv).getStrItemStringSplitted(20));
+
+            break;
+        case SCM_8:
+            //scm8
+
+            try {
+                temp = retirarAspas(StringCsv(linhaArqCsv).getStrItemStringSplitted(45));
+                replace(temp.begin(),temp.end(),',','.');
+                perdaTotalRtt = stod(temp);
+                packetLoss = perdaTotalRtt*100;
+                packetSuccesses = 100 - (perdaTotalRtt*100);
+
+                setPacketLossFailure(to_string(packetLoss));
+                setPacketLossSuccesses(to_string(packetSuccesses));
+
+            } catch (...) {
+                setPacketLossFailure("$PI$");
+                setPacketLossSuccesses("$PI$");
+            }
+
+            break;
+        case SCM_9:
+            setAvailSuccesses(StringCsv(linhaArqCsv).getStrItemStringSplitted(71));
+            break;
+
+        case ASSINANTE:
+            setManufacture(StringCsv(linhaArqCsv).getStrItemStringSplitted(22));
+            break;
+
+        default:
+            qDebug() << "Indicador Invalido!";
+            break;
+        }
 
     }
     else
@@ -81,7 +146,7 @@ std::string NormalizacaoDeDados::dateTime() const
 
 void NormalizacaoDeDados::setDateTime(const std::string &dataHora)
 {
-    mDateTime = dataHora;
+    mDateTime = retirarAspas(dataHora);
 }
 
 std::string NormalizacaoDeDados::speedDown() const
@@ -91,7 +156,7 @@ std::string NormalizacaoDeDados::speedDown() const
 
 void NormalizacaoDeDados::setSpeedDown(const std::string &medidaDown)
 {
-    mSpeedDown = medidaDown;
+    mSpeedDown = retirarAspas(medidaDown);
     replace(mSpeedDown.begin(), mSpeedDown.end(), ',', '.');
 }
 
@@ -102,7 +167,7 @@ std::string NormalizacaoDeDados::speedUp() const
 
 void NormalizacaoDeDados::setSpeedUp(const std::string &medidaUp)
 {
-    mSpeedUp = medidaUp;
+    mSpeedUp = retirarAspas(medidaUp);
     replace(mSpeedUp.begin(), mSpeedUp.end(), ',', '.');
 }
 
@@ -114,7 +179,7 @@ string NormalizacaoDeDados::deciceID() const
 
 void NormalizacaoDeDados::setDeciceID(const string &deciceID)
 {
-    mDeciceID = deciceID;
+    mDeciceID = retirarAspas(deciceID);
 }
 
 string NormalizacaoDeDados::sourcerIPv4() const
@@ -124,7 +189,7 @@ string NormalizacaoDeDados::sourcerIPv4() const
 
 void NormalizacaoDeDados::setSourcerIPv4(const string &sourcerIPv4)
 {
-    mSourcerIPv4 = sourcerIPv4;
+    mSourcerIPv4 = retirarAspas(sourcerIPv4);
 }
 
 string NormalizacaoDeDados::macAddress() const
@@ -134,7 +199,7 @@ string NormalizacaoDeDados::macAddress() const
 
 void NormalizacaoDeDados::setMacAddress(const string &macAddress)
 {
-    mMacAddress = macAddress;
+    mMacAddress = retirarAspas(macAddress);
 }
 
 string NormalizacaoDeDados::manufacture() const
@@ -144,7 +209,7 @@ string NormalizacaoDeDados::manufacture() const
 
 void NormalizacaoDeDados::setManufacture(const string &manufacture)
 {
-    mManufacture = manufacture;
+    mManufacture = retirarAspas(manufacture);
 }
 
 string NormalizacaoDeDados::softwareVersion() const
@@ -154,7 +219,7 @@ string NormalizacaoDeDados::softwareVersion() const
 
 void NormalizacaoDeDados::setSoftwareVersion(const string &softwareVersion)
 {
-    mSoftwareVersion = softwareVersion;
+    mSoftwareVersion = retirarAspas(softwareVersion);
 }
 
 string NormalizacaoDeDados::availSuccesses() const
@@ -164,7 +229,7 @@ string NormalizacaoDeDados::availSuccesses() const
 
 void NormalizacaoDeDados::setAvailSuccesses(const string &availSuccesses)
 {
-    mAvailSuccesses = availSuccesses;
+    mAvailSuccesses = retirarAspas(availSuccesses);
 }
 
 
@@ -176,7 +241,7 @@ string NormalizacaoDeDados::avgRtt() const
 
 void NormalizacaoDeDados::setAvgRtt(const string &avgRtt)
 {
-    mAvgRtt = avgRtt;
+    mAvgRtt = retirarAspas(avgRtt);
     replace(mAvgRtt.begin(), mAvgRtt.end(), ',', '.');
 }
 
@@ -187,7 +252,7 @@ string NormalizacaoDeDados::jitter() const
 
 void NormalizacaoDeDados::setJitter(const string &jitter)
 {
-    mJitter = jitter;
+    mJitter = retirarAspas(jitter);
     replace(mJitter.begin(), mJitter.end(), ',', '.');
 }
 
@@ -198,7 +263,7 @@ string NormalizacaoDeDados::packetLossSuccesses() const
 
 void NormalizacaoDeDados::setPacketLossSuccesses(const string &packetLossSuccesses)
 {
-    mPacketLossSuccesses = packetLossSuccesses;
+    mPacketLossSuccesses = retirarAspas(packetLossSuccesses);
 }
 
 string NormalizacaoDeDados::packetLossFailure() const
@@ -208,7 +273,7 @@ string NormalizacaoDeDados::packetLossFailure() const
 
 void NormalizacaoDeDados::setPacketLossFailure(const string &packetLossFailure)
 {
-    mPacketLossFailure = packetLossFailure;
+    mPacketLossFailure = retirarAspas(packetLossFailure);
 }
 
 string NormalizacaoDeDados::testPoint() const
@@ -218,10 +283,16 @@ string NormalizacaoDeDados::testPoint() const
 
 void NormalizacaoDeDados::setTestPoint(const string &testPoint)
 {
-    mTestPoint = testPoint;
+    mTestPoint = retirarAspas(testPoint);
 }
 
+string NormalizacaoDeDados::retirarAspas(const string &strIn)
+{
+    string strOut = strIn;
+    strOut.erase(remove(strOut.begin(), strOut.end(), '\"'), strOut.end());
 
+    return strOut;
+}
 
 
 }

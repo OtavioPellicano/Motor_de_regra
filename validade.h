@@ -3,6 +3,8 @@
 
 namespace opmm {
 
+enum layout {ABR, TGR, NETMETRICS, SEMIGLOBE, HDM};
+
 class Validade
 {
 public:

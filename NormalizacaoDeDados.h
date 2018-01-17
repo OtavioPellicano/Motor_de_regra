@@ -1,42 +1,30 @@
 #ifndef NormalizacaoDeDados_H
 #define NormalizacaoDeDados_H
 
-
-#include "medicaocomfalha.h"        //#3* SCM SMP
-#include "avaliacaodasfalhas.h"     //#4 SCM            //Nao é possível implementar ABR
-#include "paridadedownup.h"         //#6 SCM SMP        //OK
-#include "pmt.h"                    //#7 SCM SMP
-#include "pingbackdivergente.h"     //#8 SCM SMP
-#include "solucoeshomologadas.h"    //#9 SCM
-#include "tabeladeassinantes.h"     //#20 SCM
-#include "listadeexcecao.h"         //#21 SCM SMP
-#include "pttnaocadastrado.h"       //#26 SCM SMP
-
+#include "validade.h"
 #include <string>
 #include "StringCsv.h"
-#include <vector>
-
-#include <QDir>
 #include <QDebug>
+#include <map>
 
-typedef std::vector<std::string> vecStr;
+using namespace std;
+
+typedef map<string, string> mapStrStr;
+
 
 namespace opmm {
 /**
  * @brief The NormalizacaoDeDados class
- * Classe que agrupa todas as regras de SCM
+ * Classe utilizada para normalizar as entradas de diferentes tecnologias
  */
 
-enum indicador{SCM_4, SCM_5, SCM_6, SCM_7, SCM_8, SCM_9};
+enum indicador{SCM_4, SCM_5, SCM_6, SCM_7, SCM_8, SCM_9, ASSINANTE};
 
-class NormalizacaoDeDados
+class NormalizacaoDeDados : public Validade
 {
     //Funções
 public:
     NormalizacaoDeDados(const string &linhaArqCsv, const layout &tipoLayout, const indicador &ind);
-
-    //deviceid;timestamp;isp;type;manufacturer;model;software_version;ip_address;test_point;mem_total;mem_free;cpu_usage(%);os_version;os_type;battery_usage(%);cell_id;cell_id_changed;lac;tac;cgi/e-cgi;imei;imsi;network_type;signal_strength;roaming;wan_mode;network_type_changed;download_state;download_filesize_test(Bytes);download_rate(bps);upload_state;upload_filesize_test(Bytes);upload_rate(bps);udp_state;udp_estimated_triffc(Bytes);udp_latency(ms);udp_jitter(ms);udp_packet_loss_percent(%);total_traffic_sent;total_traffic_received;total_traffic;test_origin(APP|PROBE);source(Manual|Auto)
-
 
 private:
 
@@ -87,6 +75,9 @@ private:
 
     string packetLossSuccesses() const;
     void setPacketLossSuccesses(const string &packetLossSuccesses);
+
+    string retirarAspas(const string &strIn);
+
 
     //Variaveis
 private:
