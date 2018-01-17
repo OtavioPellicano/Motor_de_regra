@@ -1,8 +1,8 @@
-#include "regrasscm.h"
+#include "NormalizacaoDeDados.h"
 
 namespace opmm {
 
-RegrasSCM::RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout, const indicador &ind)
+NormalizacaoDeDados::NormalizacaoDeDados(const string &linhaArqCsv, const layout &tipoLayout, const indicador &ind)
 {
 
 
@@ -74,149 +74,149 @@ RegrasSCM::RegrasSCM(const string &linhaArqCsv, const layout &tipoLayout, const 
 
 }
 
-std::string RegrasSCM::dateTime() const
+std::string NormalizacaoDeDados::dateTime() const
 {
     return mDateTime;
 }
 
-void RegrasSCM::setDateTime(const std::string &dataHora)
+void NormalizacaoDeDados::setDateTime(const std::string &dataHora)
 {
     mDateTime = dataHora;
 }
 
-std::string RegrasSCM::speedDown() const
+std::string NormalizacaoDeDados::speedDown() const
 {
     return mSpeedDown;
 }
 
-void RegrasSCM::setSpeedDown(const std::string &medidaDown)
+void NormalizacaoDeDados::setSpeedDown(const std::string &medidaDown)
 {
     mSpeedDown = medidaDown;
     replace(mSpeedDown.begin(), mSpeedDown.end(), ',', '.');
 }
 
-std::string RegrasSCM::speedUp() const
+std::string NormalizacaoDeDados::speedUp() const
 {
     return mSpeedUp;
 }
 
-void RegrasSCM::setSpeedUp(const std::string &medidaUp)
+void NormalizacaoDeDados::setSpeedUp(const std::string &medidaUp)
 {
     mSpeedUp = medidaUp;
     replace(mSpeedUp.begin(), mSpeedUp.end(), ',', '.');
 }
 
 
-string RegrasSCM::deciceID() const
+string NormalizacaoDeDados::deciceID() const
 {
     return mDeciceID;
 }
 
-void RegrasSCM::setDeciceID(const string &deciceID)
+void NormalizacaoDeDados::setDeciceID(const string &deciceID)
 {
     mDeciceID = deciceID;
 }
 
-string RegrasSCM::sourcerIPv4() const
+string NormalizacaoDeDados::sourcerIPv4() const
 {
     return mSourcerIPv4;
 }
 
-void RegrasSCM::setSourcerIPv4(const string &sourcerIPv4)
+void NormalizacaoDeDados::setSourcerIPv4(const string &sourcerIPv4)
 {
     mSourcerIPv4 = sourcerIPv4;
 }
 
-string RegrasSCM::macAddress() const
+string NormalizacaoDeDados::macAddress() const
 {
     return mMacAddress;
 }
 
-void RegrasSCM::setMacAddress(const string &macAddress)
+void NormalizacaoDeDados::setMacAddress(const string &macAddress)
 {
     mMacAddress = macAddress;
 }
 
-string RegrasSCM::manufacture() const
+string NormalizacaoDeDados::manufacture() const
 {
     return mManufacture;
 }
 
-void RegrasSCM::setManufacture(const string &manufacture)
+void NormalizacaoDeDados::setManufacture(const string &manufacture)
 {
     mManufacture = manufacture;
 }
 
-string RegrasSCM::softwareVersion() const
+string NormalizacaoDeDados::softwareVersion() const
 {
     return mSoftwareVersion;
 }
 
-void RegrasSCM::setSoftwareVersion(const string &softwareVersion)
+void NormalizacaoDeDados::setSoftwareVersion(const string &softwareVersion)
 {
     mSoftwareVersion = softwareVersion;
 }
 
-string RegrasSCM::availSuccesses() const
+string NormalizacaoDeDados::availSuccesses() const
 {
     return mAvailSuccesses;
 }
 
-void RegrasSCM::setAvailSuccesses(const string &availSuccesses)
+void NormalizacaoDeDados::setAvailSuccesses(const string &availSuccesses)
 {
     mAvailSuccesses = availSuccesses;
 }
 
 
 
-string RegrasSCM::avgRtt() const
+string NormalizacaoDeDados::avgRtt() const
 {
     return mAvgRtt;
 }
 
-void RegrasSCM::setAvgRtt(const string &avgRtt)
+void NormalizacaoDeDados::setAvgRtt(const string &avgRtt)
 {
     mAvgRtt = avgRtt;
     replace(mAvgRtt.begin(), mAvgRtt.end(), ',', '.');
 }
 
-string RegrasSCM::jitter() const
+string NormalizacaoDeDados::jitter() const
 {
     return mJitter;
 }
 
-void RegrasSCM::setJitter(const string &jitter)
+void NormalizacaoDeDados::setJitter(const string &jitter)
 {
     mJitter = jitter;
     replace(mJitter.begin(), mJitter.end(), ',', '.');
 }
 
-string RegrasSCM::packetLossSuccesses() const
+string NormalizacaoDeDados::packetLossSuccesses() const
 {
     return mPacketLossSuccesses;
 }
 
-void RegrasSCM::setPacketLossSuccesses(const string &packetLossSuccesses)
+void NormalizacaoDeDados::setPacketLossSuccesses(const string &packetLossSuccesses)
 {
     mPacketLossSuccesses = packetLossSuccesses;
 }
 
-string RegrasSCM::packetLossFailure() const
+string NormalizacaoDeDados::packetLossFailure() const
 {
     return mPacketLossFailure;
 }
 
-void RegrasSCM::setPacketLossFailure(const string &packetLossFailure)
+void NormalizacaoDeDados::setPacketLossFailure(const string &packetLossFailure)
 {
     mPacketLossFailure = packetLossFailure;
 }
 
-string RegrasSCM::testPoint() const
+string NormalizacaoDeDados::testPoint() const
 {
     return mTestPoint;
 }
 
-void RegrasSCM::setTestPoint(const string &testPoint)
+void NormalizacaoDeDados::setTestPoint(const string &testPoint)
 {
     mTestPoint = testPoint;
 }

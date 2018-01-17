@@ -25,7 +25,7 @@
 
 
 //Agrupado
-#include "regrasscm.h"
+#include "NormalizacaoDeDados.h"
 
 
 using namespace std;
@@ -196,7 +196,7 @@ int main()
     {
         for(size_t i = 1; getline(arqOrigem, str); ++i )
         {
-            opmm::RegrasSCM(str, opmm::layout::HDM, opmm::indicador::SCM_4);
+            opmm::NormalizacaoDeDados(str, opmm::layout::HDM, opmm::indicador::SCM_4);
 
         }
 

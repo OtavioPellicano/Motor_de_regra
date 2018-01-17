@@ -17,8 +17,8 @@ SOURCES += main.cpp \
     avaliacaodacpu.cpp \
     listadeexcecao.cpp \
     tabeladeassinantes.cpp \
-    regrasscm.cpp \
-    StringCsv.cpp
+    StringCsv.cpp \
+    NormalizacaoDeDados.cpp
 
 HEADERS += \
     pmt.h \
@@ -34,5 +34,5 @@ HEADERS += \
     avaliacaodacpu.h \
     listadeexcecao.h \
     tabeladeassinantes.h \
-    regrasscm.h \
-    StringCsv.h
+    StringCsv.h \
+    NormalizacaoDeDados.h
