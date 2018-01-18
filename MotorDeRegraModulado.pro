@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     listadeexcecao.cpp \
     tabeladeassinantes.cpp \
     StringCsv.cpp \
-    NormalizacaoDeDados.cpp
+    NormalizacaoDeDados.cpp \
+    DePara.cpp
 
 HEADERS += \
     pmt.h \
@@ -35,4 +36,5 @@ HEADERS += \
     listadeexcecao.h \
     tabeladeassinantes.h \
     StringCsv.h \
-    NormalizacaoDeDados.h
+    NormalizacaoDeDados.h \
+    DePara.h
