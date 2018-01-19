@@ -205,15 +205,17 @@ int main()
     }
 
 
-    QDateTime dateTimeAtual(QDate(2018,1,4), QTime(3,21,43));
+    QDateTime dateTimeAtual(QDate(2018,1,15), QTime(3,21,43));
     QDateTime dateTimeInicio(QDate(2018,1,1), QTime(0,0,0));
     QDateTime dateTimeFim(QDate(2018,1,10), QTime(23,59,59));
 
     vector<string> listaExcecaoInfra;
-    listaExcecaoInfra.push_back("192.168.0.4");
+    //listaExcecaoInfra.push_back("192.168.0.4");
     listaExcecaoInfra.push_back("192.168.0.5");
     listaExcecaoInfra.push_back("192.168.0.8");
     listaExcecaoInfra.push_back("192.168.0.23");
+
+
 
 
     if(opmm::ExcecaoDeInfraestrutura("192.168.0.4", dateTimeAtual, dateTimeInicio,

@@ -5,15 +5,18 @@ namespace opmm {
 
 ExcecaoDeInfraestrutura::ExcecaoDeInfraestrutura(const std::string &testPoint, const QDateTime &dateTime,
                                                  const QDateTime &dateTimeInicio, const QDateTime &dateTimeFim,
-                                                 const std::vector<std::string> &listaDeExcecaoPtts)
+                                                 const std::vector<std::string> &listaDeExcecaoPtt)
 {
-    //Critério para descartar todos os servidores no periodo
-    if(listaDeExcecaoPtts.size() != 0)
+    /**
+     * Critério para descartar todos os servidores no periodo
+     * Caso a listaDeExcecaoPtt esteja vazia, descarta todos os Ptts
+     * */
+    if(listaDeExcecaoPtt.size() != 0)
     {
         if(dateTime >= dateTimeInicio && dateTime <= dateTimeFim)
         {
-            if(std::find(listaDeExcecaoPtts.begin(), listaDeExcecaoPtts.end(), testPoint)
-                    != listaDeExcecaoPtts.end())
+            if(std::find(listaDeExcecaoPtt.begin(), listaDeExcecaoPtt.end(), testPoint)
+                    != listaDeExcecaoPtt.end())
             {
                 setMedicaoValida(false);
             }

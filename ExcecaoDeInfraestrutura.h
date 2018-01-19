@@ -21,7 +21,7 @@ class ExcecaoDeInfraestrutura : public Validade
 public:
     ExcecaoDeInfraestrutura(const std::string &testPoint, const QDateTime &dateTime,
                             const QDateTime &dateTimeInicio, const QDateTime &dateTimeFim,
-                            const std::vector<std::string> &listaDeExcecaoPtts);
+                            const std::vector<std::string> &listaDeExcecaoPtt);
 };
 
 }
