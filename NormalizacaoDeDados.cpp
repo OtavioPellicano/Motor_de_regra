@@ -8,7 +8,8 @@ NormalizacaoDeDados::NormalizacaoDeDados(const string &linhaArqCsv, const layout
     if(tipoLayout == ABR)
     {
 
-        setDateTime(StringCsv(linhaArqCsv).getStrItemStringSplitted(1));
+        setDateTimeStr(StringCsv(linhaArqCsv).getStrItemStringSplitted(1));
+        setDateTimeQt(dateTimeStr(), tipoLayout);
         setSpeedDown(StringCsv(linhaArqCsv).getStrItemStringSplitted(29));
         setSpeedUp(StringCsv(linhaArqCsv).getStrItemStringSplitted(32));
         setJitter(StringCsv(linhaArqCsv).getStrItemStringSplitted(36));
@@ -17,7 +18,8 @@ NormalizacaoDeDados::NormalizacaoDeDados(const string &linhaArqCsv, const layout
     else if(tipoLayout == HDM)
     {
         //geral
-        setDateTime(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(0));
+        setDateTimeStr(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(0));
+        setDateTimeQt(dateTimeStr(), tipoLayout);
         setDeciceID(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(6));
         setSourcerIPv4(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(10));
         setMacAddress(StringCsv(linhaArqCsv,",").getStrItemStringSplitted(9));
@@ -74,7 +76,8 @@ NormalizacaoDeDados::NormalizacaoDeDados(const string &linhaArqCsv, const layout
         string temp;
 
         //geral
-        setDateTime(StringCsv(linhaArqCsv).getStrItemStringSplitted(0));
+        setDateTimeStr(StringCsv(linhaArqCsv).getStrItemStringSplitted(0));
+        setDateTimeQt(dateTimeStr(), tipoLayout);
         setDeciceID(StringCsv(linhaArqCsv).getStrItemStringSplitted(5));
         setSourcerIPv4(StringCsv(linhaArqCsv).getStrItemStringSplitted(4));
         setMacAddress(StringCsv(linhaArqCsv).getStrItemStringSplitted(5));
@@ -139,14 +142,14 @@ NormalizacaoDeDados::NormalizacaoDeDados(const string &linhaArqCsv, const layout
 
 }
 
-std::string NormalizacaoDeDados::dateTime() const
+std::string NormalizacaoDeDados::dateTimeStr() const
 {
-    return mDateTime;
+    return mDateTimeStr;
 }
 
-void NormalizacaoDeDados::setDateTime(const std::string &dataHora)
+void NormalizacaoDeDados::setDateTimeStr(const std::string &dataHora)
 {
-    mDateTime = retirarAspas(dataHora);
+    mDateTimeStr = retirarAspas(dataHora);
 }
 
 std::string NormalizacaoDeDados::speedDown() const
@@ -293,6 +296,173 @@ string NormalizacaoDeDados::retirarAspas(const string &strIn)
 
     return strOut;
 }
+
+QDateTime NormalizacaoDeDados::dateTimeQt() const
+{
+    return mDateTimeQt;
+}
+
+void NormalizacaoDeDados::setDateTimeQt(const string &dateTimeStr, const layout &tipoLayout)
+{
+
+    int dia, mes, ano, hora, minuto, segundo;
+
+    switch (tipoLayout) {
+    case ABR:   //AAAA-MM-DD HH:MM:SS.SSSSSS
+
+        if(dateTimeStr.size() != 26)
+        {
+            cout << "Data fora do formato!" << endl;
+            mDateTimeQt = QDateTime(QDate(1900, 1, 1),QTime(12, 0, 0));
+        }
+        else
+        {
+
+            try
+            {
+                ano = stoi(string(dateTimeStr,0,4));
+                mes = stoi(string(dateTimeStr,5,2));
+                dia = stoi(string(dateTimeStr,8,2));
+
+                hora = stoi(string(dateTimeStr,11,2));
+                minuto = stoi(string(dateTimeStr,14,2));
+                segundo = stoi(string(dateTimeStr,17,2));
+            }
+            catch(...)
+            {
+                ano = 1900;
+                mes = 1;
+                dia = 1;
+
+                hora = 12;
+                minuto = 0;
+                segundo = 0;
+            }
+
+            mDateTimeQt = QDateTime(QDate(ano, mes, dia),QTime(hora, minuto, segundo));
+
+        }
+
+        break;
+    case TGR:   //AAAA-MM-DD HH:MM:SS
+    case HDM:
+        if(dateTimeStr.size() != 19)
+        {
+            cout << "Data fora do formato!" << endl;
+            mDateTimeQt = QDateTime(QDate(1900, 1, 1),QTime(12, 0, 0));
+        }
+        else
+        {
+
+            try
+            {
+                ano = stoi(string(dateTimeStr,0,4));
+                mes = stoi(string(dateTimeStr,5,2));
+                dia = stoi(string(dateTimeStr,8,2));
+
+                hora = stoi(string(dateTimeStr,11,2));
+                minuto = stoi(string(dateTimeStr,14,2));
+                segundo = stoi(string(dateTimeStr,17,2));
+            }
+            catch(...)
+            {
+                ano = 1900;
+                mes = 1;
+                dia = 1;
+
+                hora = 12;
+                minuto = 0;
+                segundo = 0;
+            }
+
+            mDateTimeQt = QDateTime(QDate(ano, mes, dia),QTime(hora, minuto, segundo));
+
+        }
+
+        break;
+    case NETMETRICS: //DD/MM/AAAA HH:MM:SS
+
+
+        if(dateTimeStr.size() != 19)
+        {
+            cout << "Data fora do formato!" << endl;
+            mDateTimeQt = QDateTime(QDate(1900, 1, 1),QTime(12, 0, 0));
+        }
+        else
+        {
+            try
+            {
+                ano = stoi(string(dateTimeStr,6,4));
+                mes = stoi(string(dateTimeStr,3,2));
+                dia = stoi(string(dateTimeStr,0,2));
+
+                hora = stoi(string(dateTimeStr,11,2));
+                minuto = stoi(string(dateTimeStr,14,2));
+                segundo = stoi(string(dateTimeStr,17,2));
+            }
+            catch(...)
+            {
+                ano = 1900;
+                mes = 1;
+                dia = 1;
+
+                hora = 12;
+                minuto = 0;
+                segundo = 0;
+            }
+
+            mDateTimeQt = QDateTime(QDate(ano, mes, dia),QTime(hora, minuto, segundo));
+
+
+        }
+
+        break;
+    case SEMIGLOBE: //MM/DD/AAAA HH:MM SEMIGLOBE
+
+        if(dateTimeStr.size() != 16)
+        {
+            cout << "Data fora do formato!" << endl;
+            mDateTimeQt = QDateTime(QDate(1900, 1, 1),QTime(12, 0, 0));
+        }
+        else
+        {
+
+            try
+            {
+                ano = stoi(string(dateTimeStr,6,4));
+                mes = stoi(string(dateTimeStr,0,2));
+                dia = stoi(string(dateTimeStr,3,2));
+
+                hora = stoi(string(dateTimeStr,11,2));
+                minuto = stoi(string(dateTimeStr,14,2));
+                segundo = 0;
+            }
+            catch(...)
+            {
+                ano = 1900;
+                mes = 1;
+                dia = 1;
+
+                hora = 12;
+                minuto = 0;
+                segundo = 0;
+            }
+
+            mDateTimeQt = QDateTime(QDate(ano, mes, dia),QTime(hora, minuto, segundo));
+
+        }
+
+        break;
+    default:
+        mDateTimeQt = QDateTime(QDate(1900, 1, 1),QTime(12, 0, 0));
+        cout << "ERRO NO LAYOUT!!!" << endl;
+        break;
+    }
+
+
+}
+
+
 
 
 }

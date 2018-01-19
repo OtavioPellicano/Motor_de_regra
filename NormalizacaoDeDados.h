@@ -6,6 +6,7 @@
 #include "StringCsv.h"
 #include <QDebug>
 #include <map>
+#include <QDateTime>
 
 using namespace std;
 
@@ -26,10 +27,11 @@ class NormalizacaoDeDados : public Validade
 public:
     NormalizacaoDeDados(const string &linhaArqCsv, const layout &tipoLayout, const indicador &ind);
 
+
 private:
 
-    std::string dateTime() const;
-    void setDateTime(const std::string &dateTime);
+    std::string dateTimeStr() const;
+    void setDateTimeStr(const std::string &dateTime);
 
     std::string speedDown() const;
     void setSpeedDown(const std::string &speedDown);
@@ -76,12 +78,15 @@ private:
     string packetLossSuccesses() const;
     void setPacketLossSuccesses(const string &packetLossSuccesses);
 
+    QDateTime dateTimeQt() const;
+    void setDateTimeQt(const string &dateTimeStr, const layout &tipoLayout);
+
     string retirarAspas(const string &strIn);
 
 
     //Variaveis
 private:
-    string mDateTime;           //Data e hora exata do inicio dos testes
+    string mDateTimeStr;           //Data e hora exata do inicio dos testes
 
     string mDeciceID;           //Identificador da sonda
     string mSourcerIPv4;        //Ultimo endereço IPv4 da fonte
@@ -101,6 +106,7 @@ private:
     string mPacketLossFailure;  //Número de pacotes enviados com falha
     string mPacketLossSuccesses;//Número de pacotes enviados com sucesso
 
+    QDateTime mDateTimeQt;
 
 
 };

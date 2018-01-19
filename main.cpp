@@ -236,23 +236,23 @@ int main()
 //    ifstream arqOrigem("C:/Users/otaviomello/Documents/ABRTELECOM/Qt Projects/ValidacaoRawData/MotorDeRegra_Modulado/SCM_4_5/scm4_5_2018-01-01_00_00_01.csv");
 
 
-//    ifstream arqOrigem("C:/Users/otaviomello/Documents/ABRTELECOM/Qt Projects/ValidacaoRawData/MotorDeRegra_Modulado/carga_AJUDTCSRV04_2018-01-01-00-45-17.csv");
+    ifstream arqOrigem("C:/Users/otaviomello/Documents/ABRTELECOM/Qt Projects/ValidacaoRawData/MotorDeRegra_Modulado/carga_AJUDTCSRV04_2018-01-01-00-45-17.csv");
 
-//    string str;
-//    if (arqOrigem.is_open())
-//    {
-//        for(size_t i = 1; getline(arqOrigem, str); ++i )
-//        {
-//            opmm::NormalizacaoDeDados(str, opmm::layout::TGR, opmm::indicador::SCM_8);
+    string str;
+    if (arqOrigem.is_open())
+    {
+        for(size_t i = 1; getline(arqOrigem, str); ++i )
+        {
+            opmm::NormalizacaoDeDados(str, opmm::layout::TGR, opmm::indicador::SCM_8);
 
-//        }
+        }
 
-//        arqOrigem.close();
-//    }
-//    else
-//    {
-//        cout << "Impossivel abrir o arquivo de origem" << endl;
-//    }
+        arqOrigem.close();
+    }
+    else
+    {
+        cout << "Impossivel abrir o arquivo de origem" << endl;
+    }
 
 
 
