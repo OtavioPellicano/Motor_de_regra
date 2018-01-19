@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     tabeladeassinantes.cpp \
     StringCsv.cpp \
     NormalizacaoDeDados.cpp \
-    DePara.cpp
+    DePara.cpp \
+    ModeloHardwareNaoCompativel.cpp
 
 HEADERS += \
     pmt.h \
@@ -37,4 +38,5 @@ HEADERS += \
     tabeladeassinantes.h \
     StringCsv.h \
     NormalizacaoDeDados.h \
-    DePara.h
+    DePara.h \
+    ModeloHardwareNaoCompativel.h

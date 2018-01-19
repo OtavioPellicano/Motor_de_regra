@@ -9,7 +9,9 @@ DePara::DePara(const string &pathIn, const string &pathOut, const layout &tipoLa
     setTipoLayout(tipoLayout);
 
     setFiltro("*.csv");
-    mDirPathIn.setNameFilters(filtro);
+    QStringList listaFiltros;
+    listaFiltros.append(mFiltro);
+    mDirPathIn.setNameFilters(listaFiltros);
     setListaArquivosIn(dirPathIn().entryList());
 
     processarDePara();
@@ -54,7 +56,7 @@ void DePara::processarDePara()
 
         for(QStringList::iterator itQStr = listaArquivosIn().begin(); itQStr != listaArquivosIn().end(); ++itQStr)
         {
-            setNomeArquivoIn(dirPathIn().absoluteFilePath(*itQstr).toStdString());
+            setNomeArquivoIn(dirPathIn().absoluteFilePath(*itQStr).toStdString());
 
             mArquivoIn.open(nomeArquivoIn());
 
