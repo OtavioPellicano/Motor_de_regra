@@ -3,9 +3,10 @@
 namespace opmm {
 
 
-ListaDeExcecao::ListaDeExcecao(const std::string &coletor, const std::vector<std::string> &listaExcecao)
+ListaDeExcecao::ListaDeExcecao(const std::string &coletor,
+                               const std::vector<std::string> &listaExcecaoMac)
 {
-    if(std::find(listaExcecao.begin(), listaExcecao.end(), coletor) != listaExcecao.end())
+    if(std::find(listaExcecaoMac.begin(), listaExcecaoMac.end(), coletor) != listaExcecaoMac.end())
     {
         setMedicaoValida(false);
     }

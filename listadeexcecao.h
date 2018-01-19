@@ -17,7 +17,7 @@ namespace opmm {
 class ListaDeExcecao : public Validade
 {
 public:
-    ListaDeExcecao(const std::string &coletor, const std::vector<std::string> &listaExcecao);
+    ListaDeExcecao(const std::string &coletor, const std::vector<std::string> &listaExcecaoMac);
 };
 
 

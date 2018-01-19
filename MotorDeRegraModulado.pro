@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     StringCsv.cpp \
     NormalizacaoDeDados.cpp \
     DePara.cpp \
-    ModeloHardwareNaoCompativel.cpp
+    ModeloHardwareNaoCompativel.cpp \
+    ExcecaoDeInfraestrutura.cpp
 
 HEADERS += \
     pmt.h \
@@ -39,4 +40,5 @@ HEADERS += \
     StringCsv.h \
     NormalizacaoDeDados.h \
     DePara.h \
-    ModeloHardwareNaoCompativel.h
+    ModeloHardwareNaoCompativel.h \
+    ExcecaoDeInfraestrutura.h
