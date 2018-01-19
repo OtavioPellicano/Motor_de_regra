@@ -88,7 +88,7 @@ void PMT::normalizarDataHora()
 
         break;
     case TGR:   //AAAA-MM-DD HH:MM:SS
-
+    case HDM:
         if(dataHoraSemAspas.size() != 19)
         {
             cout << "Data fora do formato!" << endl;
@@ -132,7 +132,6 @@ void PMT::normalizarDataHora()
 
         break;
     case NETMETRICS: //DD/MM/AAAA HH:MM:SS
-    case HDM:
 
 
         if(dataHoraSemAspas.size() != 19)
