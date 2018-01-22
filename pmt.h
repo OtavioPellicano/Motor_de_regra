@@ -30,7 +30,6 @@ public: //Métodos Públicos
         const layout &tipoLayout, QTime horaInicio = QTime(10,0,0),
         QTime horaFinal = QTime(22,0,0));
 
-    bool medicaoValida();
 
 private: //Variaveis Privadas
     string mDataHoraRef;

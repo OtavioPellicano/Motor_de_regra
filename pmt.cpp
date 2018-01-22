@@ -6,23 +6,23 @@ PMT::PMT(const string &dataHoraRef, const string &ufServidor, const string &ufCl
     :mDataHoraRef(dataHoraRef), mUfServidor(ufServidor), mUfCliente(ufCliente), mTipoLayout(tipoLayout),
       mHoraInicio(horaInicio), mHoraFinal(horaFinal)
 {
+
+    if (mMapUfGmt.find(ufServidor) == mMapUfGmt.end())
+    {
+        setMedicaoValida(false);
+        return;
+    }
+
+    if (mMapUfGmt.find(ufCliente) == mMapUfGmt.end())
+    {
+        setMedicaoValida(false);
+        return;
+    }
+
     normalizarDataHora();
-}
 
-bool PMT::medicaoValida()
-{
-
-    if((mDataHoraNormalizada.time() >= mHoraInicio && mDataHoraNormalizada.time() <= mHoraFinal) && (mDataHoraNormalizada.date() != QDate(1900,1,1)))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
 
 }
-
 
 string PMT::retirarAspas(const string &strIn)
 {
@@ -221,6 +221,16 @@ void PMT::normalizarDataHora()
         break;
     default:
         break;
+    }
+
+
+    if((mDataHoraNormalizada.time() >= mHoraInicio && mDataHoraNormalizada.time() <= mHoraFinal) && (mDataHoraNormalizada.date() != QDate(1900,1,1)))
+    {
+        setMedicaoValida(true);
+    }
+    else
+    {
+        setMedicaoValida(false);
     }
 
 }
